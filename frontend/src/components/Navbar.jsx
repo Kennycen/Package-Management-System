@@ -1,11 +1,10 @@
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Package, Menu, X } from "lucide-react";
-import { assets } from '../assets/assets'
 import { AppContext } from '../context/AppContext';
 
 const Navbar = () => {
-  const {user, setShowLogin} = useContext(AppContext);
+  const {setShowLogin} = useContext(AppContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToSection = (sectionId) => {
@@ -29,29 +28,6 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:block">
-          {user ? (
-            <div className="flex items-center gap-2 sm:gap-3">
-              <p className="max-sm:hidden pl-4">Hi, {user.name}</p>
-              <div className="relative group">
-                <img
-                  src={assets.profile_icon}
-                  className="w-8 drop-shadow cursor-pointer"
-                  alt=""
-                />
-                <div className="absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-12">
-                  <ul className="list-none m-0 p-3 bg-white rounded-md border text-sm">
-                    <li className="py-1 px-2 cursor-pointer">
-                      Profile
-                    </li>
-                    <li className="py-1 px-2 cursor-pointer border-b border-black">
-                      Setting
-                    </li>
-                    <li onClick={logout} className="py-1 px-2 cursor-pointer">Logout</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          ) : (
             <div className="flex items-center gap-6">
               <button 
                 onClick={() => scrollToSection('feature')}
@@ -69,7 +45,6 @@ const Navbar = () => {
                 Login
               </button>
             </div>
-          )}
         </div>
 
         {/* Mobile Menu Button */}

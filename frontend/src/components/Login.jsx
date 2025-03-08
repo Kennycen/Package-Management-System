@@ -120,7 +120,7 @@ const Login = () => {
         <p className="text-sm text-blue-600 my-4 cursor-pointer">
           Forgot password?
         </p>
-        <button className="bg-blue-600 w-full text-white py-2 rounded-lg">
+        <button className="bg-blue-600 w-full text-white py-2 rounded-lg cursor-pointer">
           {state === "Login" ? "Login" : "Create account"}
         </button>
         {state === "Login" ? (
