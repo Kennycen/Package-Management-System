@@ -1,7 +1,33 @@
 import React from 'react'
 import { Package, Calendar, Bell, CheckCircle2 } from 'lucide-react'
+import { packageService } from '../services/api';
+import { toast } from 'react-toastify';
 
-const PackageCard = ({ pkg, activeStatus }) => {
+const PackageCard = ({ pkg, activeStatus, onStatusChange }) => {
+  // Format date helper function
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    return new Date(dateString).toISOString().split('T')[0];
+  };
+
+  const handleStatusChange = async () => {
+    try {
+      const newStatus = activeStatus === 'arrived' ? 'notified' : 'picked';
+      const response = await packageService.updatePackageStatus(pkg._id, newStatus);
+      
+      if (response.success) {
+        toast.success(`Package ${newStatus === 'notified' ? 'notification sent' : 'marked as picked up'}`);
+        // Trigger parent component to refresh the list
+        if (onStatusChange) {
+          onStatusChange();
+        }
+      } else {
+        toast.error(response.message);
+      }
+    } catch (error) {
+      toast.error('Failed to update package status');
+    }
+  };
 
   const getStatusBadge = () => {
     switch (activeStatus) {
@@ -38,11 +64,11 @@ const PackageCard = ({ pkg, activeStatus }) => {
       </div>
 
       <div className='mb-3 text-sm text-gray-500'>
-        Apt {pkg.apartment || '101'} - {pkg.carrier}
+        Apt {pkg.apartment} - {pkg.carrier}
       </div>
 
       <div className='mb-3 text-gray-600'>
-        {pkg.description || 'Description of the package'}
+        {pkg.description}
       </div>
       
       <div className="space-y-2">
@@ -53,32 +79,38 @@ const PackageCard = ({ pkg, activeStatus }) => {
         
         <div className="flex items-center gap-2">
           <Calendar className="h-4 w-4 text-gray-400" />
-          <span className="text-gray-600">{pkg.arrivalDate}</span>
+          <span className="text-gray-600">
+            {activeStatus === 'arrived' ? 
+              formatDate(pkg.arrivalDate) : 
+              `Arrived: ${formatDate(pkg.arrivalDate)}`
+            }
+          </span>
         </div>
 
-        {(activeStatus === 'notified' || activeStatus === 'picked') && (
+        {pkg.notificationDate && (activeStatus === 'notified' || activeStatus === 'picked') && (
           <div className="flex items-center gap-2 text-yellow-600">
             <Bell className="h-4 w-4" />
-            <span>Notified: {pkg.notificationDate || 'Feb 20, 2024 15:30'}</span>
+            <span>Notified: {formatDate(pkg.notificationDate)}</span>
           </div>
         )}
 
-        {activeStatus === 'picked' && (
+        {pkg.pickupDate && activeStatus === 'picked' && (
           <div className="flex items-center gap-2 text-green-600">
             <CheckCircle2 className="h-4 w-4" />
-            <span>Picked up: {pkg.pickupDate || 'Feb 21, 2024 10:15'}</span>
+            <span>Picked up: {formatDate(pkg.pickupDate)}</span>
           </div>
         )}
         
         <div className="flex items-center gap-2">
           <Package className="h-4 w-4 text-gray-400" />
-          <span className="text-gray-600">{pkg.size || 'Medium package'}</span>
+          <span className="text-gray-600">{pkg.size}</span>
         </div>
       </div>
 
       <div className="mt-4 pt-3 border-t">
         {activeStatus !== 'picked' ? (
           <button 
+            onClick={handleStatusChange}
             className={`w-full py-2 text-center rounded-md ${
               activeStatus === 'arrived' 
                 ? 'bg-blue-600 hover:bg-blue-700' 
@@ -89,7 +121,7 @@ const PackageCard = ({ pkg, activeStatus }) => {
           </button>
         ) : (
           <div className="text-center text-gray-500 text-sm">
-            Picked up on {pkg.pickupDate || 'Feb 21, 2024 10:15'}
+            Picked up on {formatDate(pkg.pickupDate)}
           </div>
         )}
       </div>

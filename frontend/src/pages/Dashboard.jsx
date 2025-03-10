@@ -1,12 +1,14 @@
-import React, { useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import DashboardNavbar from '../components/DashboardNavbar'
 import SearchSection from '../components/SearchSection'
 import PackageStatusButtons from '../components/PackageStatusButtons'
 import PackageList from '../components/PackageList'
+import AddPackageModal from '../components/AddPackageModal'
 import { AppContext } from '../context/AppContext'
 
 const Dashboard = () => {
   const { activeStatus } = useContext(AppContext);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   return (
     <div>
@@ -18,9 +20,13 @@ const Dashboard = () => {
             Manage incoming packages and tenant notifications
           </h3>
         </div>
-        <SearchSection />
+        <SearchSection onAddClick={() => setIsAddModalOpen(true)} />
         <PackageStatusButtons />
         <PackageList activeStatus={activeStatus} />
+        <AddPackageModal
+          isOpen={isAddModalOpen}
+          onClose={() => setIsAddModalOpen(false)}
+        />
       </div>
     </div>
   )

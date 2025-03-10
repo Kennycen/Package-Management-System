@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { X } from "lucide-react";
+import { packageService } from '../services/api';
+import { toast } from "react-toastify";
 
 const AddPackageModal = ({ isOpen, onClose }) => {
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     trackingNumber: "",
     carrier: "",
@@ -12,14 +15,27 @@ const AddPackageModal = ({ isOpen, onClose }) => {
   });
 
   const carriers = ["UPS", "USPS", "FedEx", "DHL", "Amazon Logistics", "Other"];
-
   const packageSizes = ["Small", "Medium", "Large", "Extra Large"];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log(formData);
-    onClose();
+    setLoading(true);
+
+    try {
+      const response = await packageService.addPackage(formData);
+      if (response.success) {
+        toast.success("Package added successfully!");
+        onClose();
+        // Force reload the packages list
+        window.location.reload();
+      } else {
+        toast.error(response.message);
+      }
+    } catch (error) {
+      toast.error(error.message || "Failed to add package");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -153,9 +169,10 @@ const AddPackageModal = ({ isOpen, onClose }) => {
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors md:w-1/2"
+            disabled={loading}
+            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors md:w-1/2 disabled:bg-blue-300"
           >
-            Add Package
+            {loading ? "Adding..." : "Add Package"}
           </button>
         </form>
       </div>

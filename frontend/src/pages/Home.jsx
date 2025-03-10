@@ -4,6 +4,7 @@ import Hero from '../components/Hero'
 import Feature from '../components/Feature'
 import Footer from '../components/Footer'
 import About from '../components/About'
+import Accordion from '../components/Accordion'
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <Hero/>
       <Feature/>
       <About/>
+      <Accordion />
     </div>
   )
 }

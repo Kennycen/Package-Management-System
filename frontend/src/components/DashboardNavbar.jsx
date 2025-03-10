@@ -36,7 +36,6 @@ const DashboardNavbar = () => {
       </Link>
 
       <div className="flex items-center gap-2 sm:gap-3">
-        <p className="pl-4">Hi, {user?.name}</p>
         <div className="relative settings-container">
           <img
             src={assets.profile_icon}
