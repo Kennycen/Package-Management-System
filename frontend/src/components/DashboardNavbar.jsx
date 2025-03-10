@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Package, Settings, User, LogOut } from "lucide-react";
 import { AppContext } from "../context/AppContext";
 
-const DashNavbar = () => {
+const DashboardNavbar = () => {
   const { user, setUser, setToken } = useContext(AppContext);
   const navigate = useNavigate();
   const [showSettings, setShowSettings] = useState(false);
@@ -49,17 +49,17 @@ const DashNavbar = () => {
             <div className="absolute right-0 top-10 w-28 bg-white rounded-md shadow-lg border z-50">
               <div className="py-1 px-2 font-bold border-b">My Account</div>
               <div className="p-1">
-                <button className="w-full text-left px-2 py-1.5 text-sm hover:text-blue-600 flex items-center gap-2">
+                <button className="w-full text-left px-2 py-1.5 text-sm hover:text-blue-600 flex items-center gap-2 cursor-pointer">
                   <User className="h-4 w-4" />
                   Profile
                 </button>
-                <button className="w-full text-left px-2 py-1.5 text-sm hover:text-blue-600 flex items-center gap-2">
+                <button className="w-full text-left px-2 py-1.5 text-sm hover:text-blue-600 flex items-center gap-2 cursor-pointer">
                   <Settings className="h-4 w-4" />
                   Settings
                 </button>
                 <button 
                   onClick={logout}
-                  className="w-full text-left px-2 py-1.5 text-sm hover:text-blue-600 flex items-center gap-2"
+                  className="w-full text-left px-2 py-1.5 text-sm hover:text-blue-600 flex items-center gap-2 cursor-pointer"
                 >
                   <LogOut className="h-4 w-4"/>
                   Logout
@@ -73,4 +73,4 @@ const DashNavbar = () => {
   );
 };
 
-export default DashNavbar;
+export default DashboardNavbar;

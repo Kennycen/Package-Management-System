@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Search, Filter, Plus } from 'lucide-react'
+import AddPackageModal from './AddPackageModal'
 
 const SearchSection = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <div className="mb-8">
       <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
@@ -24,12 +27,20 @@ const SearchSection = () => {
           </button>
 
           {/* Add Package Button */}
-          <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          >
             <Plus className="h-5 w-5" />
             <span>Add Package</span>
           </button>
         </div>
       </div>
+
+      <AddPackageModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   )
 }

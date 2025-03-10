@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import DashNavbar from '../components/DashNavbar'
+import DashboardNavbar from '../components/DashboardNavbar'
 import SearchSection from '../components/SearchSection'
 import PackageStatusButtons from '../components/PackageStatusButtons'
 import PackageList from '../components/PackageList'
@@ -10,7 +10,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <DashNavbar />
+      <DashboardNavbar />
       <div className="max-w-[1200px] mx-auto px-4">
         <div className="my-8">
           <h1 className="text-3xl font-bold mb-4">Package Dashboard</h1>

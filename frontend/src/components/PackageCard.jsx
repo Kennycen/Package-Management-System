@@ -29,7 +29,7 @@ const PackageCard = ({ pkg, activeStatus }) => {
   };
 
   return (
-    <div className="border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+    <div className="border border-gray-400 rounded-lg p-6 shadow-lg hover:shadow-[4px_4px_0px_#000] cursor-pointer hover:-translate-y-1 duration-300">
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-2">
           <span className="font-bold text-lg">{pkg.recipient}</span>
