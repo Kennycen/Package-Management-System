@@ -8,8 +8,15 @@ import packageRouter from './routes/packageRoutes.js';
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+// Updated CORS configuration
+app.use(cors({
+  origin: true, // Allow all origins for now
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
+
 app.use(express.json());
-app.use(cors());
 connectDB();
 
 app.use('/api/user', userRouter);
