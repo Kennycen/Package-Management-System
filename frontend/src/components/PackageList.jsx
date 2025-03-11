@@ -3,7 +3,7 @@ import PackageCard from './PackageCard';
 import { packageService } from '../services/api';
 import { toast } from 'react-toastify';
 
-const PackageList = ({ activeStatus }) => {
+const PackageList = ({ activeStatus, refreshTrigger }) => {
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -25,7 +25,7 @@ const PackageList = ({ activeStatus }) => {
 
   useEffect(() => {
     fetchPackages();
-  }, [activeStatus]);
+  }, [activeStatus, refreshTrigger]);
 
   if (loading) {
     return <div className="text-center py-10">Loading packages...</div>;

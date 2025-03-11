@@ -9,6 +9,15 @@ import { AppContext } from '../context/AppContext'
 const Dashboard = () => {
   const { activeStatus } = useContext(AppContext);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
+
+  const handleModalClose = (shouldRefresh = false) => {
+    setIsAddModalOpen(false);
+    if (shouldRefresh) {
+      // Increment refresh trigger to cause PackageList to reload
+      setRefreshTrigger(prev => prev + 1);
+    }
+  };
 
   return (
     <div>
@@ -21,11 +30,14 @@ const Dashboard = () => {
           </h3>
         </div>
         <SearchSection onAddClick={() => setIsAddModalOpen(true)} />
-        <PackageStatusButtons />
-        <PackageList activeStatus={activeStatus} />
+        <PackageStatusButtons refreshTrigger={refreshTrigger} />
+        <PackageList 
+          activeStatus={activeStatus} 
+          refreshTrigger={refreshTrigger}
+        />
         <AddPackageModal
           isOpen={isAddModalOpen}
-          onClose={() => setIsAddModalOpen(false)}
+          onClose={handleModalClose}
         />
       </div>
     </div>
