@@ -5,7 +5,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
   return (
     <div className="border-b">
       <button
-        className="flex w-full items-center justify-between py-4 text-left"
+        className="flex w-full items-center justify-between py-4 text-left cursor-pointer"
         onClick={onClick}
       >
         <span className="font-medium">{question}</span>
@@ -51,7 +51,7 @@ const Accordion = () => {
   ]
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-28">
+    <section className="w-auto py-12 md:py-16 lg:py-20 items-center">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">

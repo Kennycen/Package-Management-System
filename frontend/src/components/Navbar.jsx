@@ -28,27 +28,36 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:block">
-            <div className="flex items-center gap-6">
-              <button 
-                onClick={() => scrollToSection('feature')}
-                className="cursor-pointer hover:text-gray-600"
-              >
-                Feature
-              </button>
-              <button 
-                onClick={() => scrollToSection('about')}
-                className="cursor-pointer hover:text-gray-600"
-              >
-                About
-              </button>
-              <button onClick={()=>setShowLogin(true)} className="rounded-md py-2 px-4 bg-black text-white cursor-pointer hover:bg-gray-800">
-                Login
-              </button>
-            </div>
+          <div className="flex items-center gap-6">
+            <button
+              onClick={() => scrollToSection("feature")}
+              className="cursor-pointer hover:text-gray-600"
+            >
+              Feature
+            </button>
+            <button
+              onClick={() => scrollToSection("about")}
+              className="cursor-pointer hover:text-gray-600"
+            >
+              About
+            </button>
+            <button
+              onClick={() => scrollToSection("demo")}
+              className="cursor-pointer hover:text-gray-600"
+            >
+              Demo
+            </button>
+            <button
+              onClick={() => setShowLogin(true)}
+              className="rounded-md py-2 px-4 bg-black text-white cursor-pointer hover:bg-gray-800"
+            >
+              Login
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu Button */}
-        <button 
+        <button
           className="md:hidden z-50 cursor-pointer"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
@@ -61,25 +70,34 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Navigation */}
-      <div 
+      <div
         className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out md:hidden ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="flex flex-col items-center pt-20 space-y-4">
-          <button 
-            onClick={() => scrollToSection('feature')}
-            className="w-full text-center py-2 hover:bg-gray-100"
+          <button
+            onClick={() => scrollToSection("feature")}
+            className="w-full text-center py-2 hover:bg-gray-100 cursor-pointer"
           >
             Feature
           </button>
-          <button 
-            onClick={() => scrollToSection('about')}
-            className="w-full text-center py-2 hover:bg-gray-100"
+          <button
+            onClick={() => scrollToSection("about")}
+            className="w-full text-center py-2 hover:bg-gray-100 cursor-pointer"
           >
             About
           </button>
-          <button onClick={()=>setShowLogin(true)} className="w-[80%] rounded-md py-2 px-4 bg-black text-white cursor-pointer hover:bg-gray-800">
+          <button
+            onClick={() => scrollToSection("demo")}
+            className="w-full text-center py-2 hover:bg-gray-100 cursor-pointer"
+          >
+            Demo
+          </button>
+          <button
+            onClick={() => setShowLogin(true)}
+            className="w-[80%] rounded-md py-2 px-4 bg-black text-white cursor-pointer hover:bg-gray-800"
+          >
             Login
           </button>
         </div>

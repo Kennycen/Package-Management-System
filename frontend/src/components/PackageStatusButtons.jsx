@@ -40,7 +40,7 @@ const PackageStatusButtons = () => {
         <div className="flex gap-1">
           <button
             onClick={() => handleStatusChange('arrived')}
-            className={`flex-1 px-6 py-3 rounded-lg font-medium transition-all ${
+            className={`flex-1 px-6 py-3 rounded-lg font-medium transition-all cursor-pointer ${
               activeStatus === 'arrived'
                 ? 'bg-white shadow-sm text-blue-600'
                 : 'text-gray-600 hover:text-gray-800'
@@ -55,7 +55,7 @@ const PackageStatusButtons = () => {
           </button>
           <button
             onClick={() => handleStatusChange('notified')}
-            className={`flex-1 px-6 py-3 rounded-lg font-medium transition-all ${
+            className={`flex-1 px-6 py-3 rounded-lg font-medium transition-all cursor-pointer ${
               activeStatus === 'notified'
                 ? 'bg-white shadow-sm text-blue-600'
                 : 'text-gray-600 hover:text-gray-800'
@@ -70,7 +70,7 @@ const PackageStatusButtons = () => {
           </button>
           <button
             onClick={() => handleStatusChange('picked')}
-            className={`flex-1 px-6 py-3 rounded-lg font-medium transition-all ${
+            className={`flex-1 px-6 py-3 rounded-lg font-medium transition-all cursor-pointer ${
               activeStatus === 'picked'
                 ? 'bg-white shadow-sm text-blue-600'
                 : 'text-gray-600 hover:text-gray-800'

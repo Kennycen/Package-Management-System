@@ -174,7 +174,7 @@ const AddPackageModal = ({ isOpen, onClose }) => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors md:w-1/2 disabled:bg-blue-300"
+            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors md:w-1/2 disabled:bg-blue-300 cursor-pointer"
           >
             {loading ? "Adding..." : "Add Package"}
           </button>

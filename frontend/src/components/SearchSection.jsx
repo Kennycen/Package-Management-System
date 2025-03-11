@@ -1,5 +1,5 @@
 import React from 'react'
-import { Search } from 'lucide-react'
+import { Search, Plus, Filter } from 'lucide-react'
 
 const SearchSection = ({ onAddClick }) => {
   return (
@@ -12,14 +12,23 @@ const SearchSection = ({ onAddClick }) => {
           className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
-      <button
-        onClick={onAddClick}
-        className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-      >
-        Add New Package
-      </button>
+      <div className='flex gap-4'>
+        <button
+          className="text-black px-4 py-2 rounded-lg border border-black transition-colors cursor-pointer flex gap-2"
+        >
+          <Filter />
+          Filter
+        </button>
+        <button
+          onClick={onAddClick}
+          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors cursor-pointer flex gap-2"
+        >
+          <Plus />
+          Add New Package
+        </button>
+      </div>
     </div>
-  )
+  );
 }
 
 export default SearchSection 
