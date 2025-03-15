@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../context/AppContext'
-import { packageService } from '../services/api'
+import { packageService } from '../services/packageApi'
 
 const PackageStatusButtons = () => {
   const { activeStatus, setActiveStatus } = useContext(AppContext);

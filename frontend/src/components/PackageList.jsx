@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PackageCard from './PackageCard';
-import { packageService } from '../services/api';
+import { packageService } from '../services/packageApi';
 import { toast } from 'react-toastify';
 
 const PackageList = ({ activeStatus, refreshTrigger }) => {

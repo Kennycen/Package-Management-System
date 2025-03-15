@@ -1,6 +1,6 @@
 import React from 'react'
 import { Package, Calendar, Bell, CheckCircle2 } from 'lucide-react'
-import { packageService } from '../services/api';
+import { packageService } from '../services/packageApi';
 import { toast } from 'react-toastify';
 
 const PackageCard = ({ pkg, activeStatus, onStatusChange }) => {

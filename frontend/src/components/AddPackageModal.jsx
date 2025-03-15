@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { X } from "lucide-react";
-import { packageService } from '../services/api';
+import { packageService } from '../services/packageApi';
 import { toast } from "react-toastify";
 import { AppContext } from '../context/AppContext';
 
