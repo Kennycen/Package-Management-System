@@ -106,4 +106,35 @@ const getPackagesByStatus = async (req, res) => {
   }
 };
 
-export { getPackages, addPackage, updatePackageStatus, getPackagesByStatus };
+// Delete a package
+const deletePackage = async (req, res) => {
+  try {
+    const { packageId } = req.params;
+
+    const pkg = await packageModel.findOne({ 
+      _id: packageId,
+      userId: req.user.id 
+    });
+
+    if (!pkg) {
+      return res.json({ success: false, message: "Package not found" });
+    }
+
+    // Only allow deletion of picked up packages
+    if (pkg.status !== 'picked') {
+      return res.json({ 
+        success: false, 
+        message: "Only picked up packages can be deleted" 
+      });
+    }
+
+    await packageModel.deleteOne({ _id: packageId });
+
+    res.json({ success: true, message: "Package deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+export { getPackages, addPackage, updatePackageStatus, getPackagesByStatus, deletePackage };

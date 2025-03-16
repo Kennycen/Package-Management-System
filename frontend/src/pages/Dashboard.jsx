@@ -4,6 +4,7 @@ import SearchSection from '../components/SearchSection'
 import PackageStatusButtons from '../components/PackageStatusButtons'
 import PackageList from '../components/PackageList'
 import AddPackageModal from '../components/AddPackageModal'
+import Chatbot from '../components/Chatbot'
 import { AppContext } from '../context/AppContext'
 
 const Dashboard = () => {
@@ -58,6 +59,7 @@ const Dashboard = () => {
           onClose={handleModalClose}
         />
       </div>
+      <Chatbot />
     </div>
   )
 }

@@ -5,6 +5,7 @@ import Feature from '../components/Feature'
 import About from '../components/About'
 import Accordion from '../components/Accordion'
 import Demo from '../components/Demo'
+import Chatbot from '../components/Chatbot'
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <About/>
       <Demo/>
       <Accordion />
+      <Chatbot />
     </div>
   )
 }

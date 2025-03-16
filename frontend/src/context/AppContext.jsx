@@ -19,7 +19,7 @@ const AppContextProvider = (props) => {
     token,
     setToken,
     activeStatus,
-    setActiveStatus
+    setActiveStatus,
   };
 
   return (
@@ -28,5 +28,6 @@ const AppContextProvider = (props) => {
     </AppContext.Provider>
   );
 };
+
 export default AppContextProvider;
 

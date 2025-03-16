@@ -32,5 +32,15 @@ export const packageService = {
       console.error('Update Status Error:', error);
       throw error.response?.data || { success: false, message: error.message };
     }
+  },
+
+  deletePackage: async (packageId) => {
+    try {
+      const response = await api.delete(`/api/package/${packageId}`);
+      return response.data;
+    } catch (error) {
+      console.error('Delete Package Error:', error);
+      throw error.response?.data || { success: false, message: error.message };
+    }
   }
 }; 

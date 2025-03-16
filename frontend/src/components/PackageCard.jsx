@@ -1,9 +1,11 @@
-import React from 'react'
-import { Package, Calendar, Bell, CheckCircle2 } from 'lucide-react'
+import React, { useState } from 'react'
+import { Package, Calendar, Bell, CheckCircle2, Trash2 } from 'lucide-react'
 import { packageService } from '../services/packageApi';
 import { toast } from 'react-toastify';
 
 const PackageCard = ({ pkg, activeStatus, onStatusChange }) => {
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+
   const formatDate = (dateString) => {
     if (!dateString) return '';
     return new Date(dateString).toISOString().split('T')[0];
@@ -25,6 +27,23 @@ const PackageCard = ({ pkg, activeStatus, onStatusChange }) => {
     } catch (error) {
       toast.error('Failed to update package status');
     }
+  };
+
+  const handleDelete = async () => {
+    try {
+      const response = await packageService.deletePackage(pkg._id);
+      if (response.success) {
+        toast.success('Package deleted successfully');
+        if (onStatusChange) {
+          onStatusChange();
+        }
+      } else {
+        toast.error(response.message);
+      }
+    } catch (error) {
+      toast.error('Failed to delete package');
+    }
+    setShowDeleteConfirm(false);
   };
 
   const getStatusBadge = () => {
@@ -118,8 +137,37 @@ const PackageCard = ({ pkg, activeStatus, onStatusChange }) => {
             {activeStatus === 'arrived' ? 'Notify Tenant' : 'Mark as Picked Up'}
           </button>
         ) : (
-          <div className="text-center text-gray-500 text-sm">
-            Picked up on {formatDate(pkg.pickupDate)}
+          <div className="space-y-3">
+            <div className="text-center text-gray-500 text-sm">
+              Picked up on {formatDate(pkg.pickupDate)}
+            </div>
+            {!showDeleteConfirm ? (
+              <button
+                onClick={() => setShowDeleteConfirm(true)}
+                className="w-full py-2 text-center rounded-md border border-red-500 text-red-500 hover:bg-red-50 transition-colors flex items-center justify-center gap-2"
+              >
+                <Trash2 className="h-4 w-4" />
+                Delete Package
+              </button>
+            ) : (
+              <div className="space-y-2">
+                <p className="text-center text-sm text-gray-600">Are you sure you want to delete this package?</p>
+                <div className="flex gap-2">
+                  <button
+                    onClick={handleDelete}
+                    className="flex-1 py-2 text-center rounded-md bg-red-500 text-white hover:bg-red-600 transition-colors"
+                  >
+                    Yes, Delete
+                  </button>
+                  <button
+                    onClick={() => setShowDeleteConfirm(false)}
+                    className="flex-1 py-2 text-center rounded-md border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>
