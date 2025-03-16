@@ -4,7 +4,6 @@ import { packageService } from '../services/packageApi';
 import { toast } from 'react-toastify';
 
 const PackageCard = ({ pkg, activeStatus, onStatusChange }) => {
-  // Format date helper function
   const formatDate = (dateString) => {
     if (!dateString) return '';
     return new Date(dateString).toISOString().split('T')[0];
@@ -17,7 +16,6 @@ const PackageCard = ({ pkg, activeStatus, onStatusChange }) => {
       
       if (response.success) {
         toast.success(`Package ${newStatus === 'notified' ? 'notification sent' : 'marked as picked up'}`);
-        // Trigger parent component to refresh the list
         if (onStatusChange) {
           onStatusChange();
         }

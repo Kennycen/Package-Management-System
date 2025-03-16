@@ -5,7 +5,7 @@ import { Package, Settings, User, LogOut } from "lucide-react";
 import { AppContext } from "../context/AppContext";
 
 const DashboardNavbar = () => {
-  const { user, setUser, setToken } = useContext(AppContext);
+  const { setUser, setToken } = useContext(AppContext);
   const navigate = useNavigate();
   const [showSettings, setShowSettings] = useState(false);
 
@@ -16,7 +16,6 @@ const DashboardNavbar = () => {
     navigate('/');
   };
 
-  // Close dropdown when clicking outside
   React.useEffect(() => {
     const handleClickOutside = (event) => {
       if (showSettings && !event.target.closest('.settings-container')) {

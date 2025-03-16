@@ -10,13 +10,25 @@ const Dashboard = () => {
   const { activeStatus } = useContext(AppContext);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filters, setFilters] = useState({
+    carrier: '',
+    size: ''
+  });
 
   const handleModalClose = (shouldRefresh = false) => {
     setIsAddModalOpen(false);
     if (shouldRefresh) {
-      // Increment refresh trigger to cause PackageList to reload
       setRefreshTrigger(prev => prev + 1);
     }
+  };
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
+
+  const handleFilterChange = (newFilters) => {
+    setFilters(newFilters);
   };
 
   return (
@@ -29,11 +41,17 @@ const Dashboard = () => {
             Manage incoming packages and tenant notifications
           </h3>
         </div>
-        <SearchSection onAddClick={() => setIsAddModalOpen(true)} />
+        <SearchSection 
+          onAddClick={() => setIsAddModalOpen(true)} 
+          onSearch={handleSearch}
+          onFilterChange={handleFilterChange}
+        />
         <PackageStatusButtons refreshTrigger={refreshTrigger} />
         <PackageList 
           activeStatus={activeStatus} 
           refreshTrigger={refreshTrigger}
+          searchQuery={searchQuery}
+          filters={filters}
         />
         <AddPackageModal
           isOpen={isAddModalOpen}

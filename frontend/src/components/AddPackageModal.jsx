@@ -2,10 +2,8 @@ import React, { useState, useContext } from "react";
 import { X } from "lucide-react";
 import { packageService } from '../services/packageApi';
 import { toast } from "react-toastify";
-import { AppContext } from '../context/AppContext';
 
 const AddPackageModal = ({ isOpen, onClose }) => {
-  const { activeStatus } = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     trackingNumber: "",
@@ -28,9 +26,8 @@ const AddPackageModal = ({ isOpen, onClose }) => {
       if (response.success) {
         toast.success("Package added successfully!");
         onClose();
-        // Trigger a refresh of the package list through props
         if (onClose) {
-          onClose(true); // Pass true to indicate successful addition
+          onClose(true); 
         }
       } else {
         toast.error(response.message);

@@ -28,7 +28,7 @@ const PackageStatusButtons = () => {
 
   useEffect(() => {
     fetchPackageCounts();
-  }, [activeStatus]); // Refresh counts when status changes
+  }, [activeStatus]);
 
   const handleStatusChange = (status) => {
     setActiveStatus(status);

@@ -1,12 +1,5 @@
 import React from 'react'
-import {
-  Bell,
-  CheckCircle2,
-  Clock,
-  Package,
-  PackageCheck,
-  Shield,
-} from "lucide-react";
+import { Bell, CheckCircle2, Clock, Package, PackageCheck, Shield } from "lucide-react";
 
 const Feature = () => {
   return (
