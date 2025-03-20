@@ -1,7 +1,51 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import { motion } from "motion/react";
 
 const Demo = () => {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Check if video is loaded before playing
+          if (videoRef.current.readyState >= 2) {
+            videoRef.current.play().catch(error => {
+              console.error("Error playing video:", error);
+            });
+          }
+        } else {
+          videoRef.current.pause();
+        }
+      });
+    }, options);
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+
+      // Add event listeners for debugging
+      videoRef.current.addEventListener('error', (e) => {
+        console.error('Video error:', e);
+      });
+
+      videoRef.current.addEventListener('loadeddata', () => {
+        console.log('Video loaded successfully');
+      });
+    }
+
+    return () => {
+      if (videoRef.current) {
+        observer.unobserve(videoRef.current);
+      }
+    };
+  }, []);
+
   return (
     <section id="demo" className="w-full py-10 md:py-24 lg:py-24 items-center">
       <div className="flex flex-col items-center justify-center space-y-4 text-center mb-10">
@@ -23,8 +67,20 @@ const Demo = () => {
           </motion.h2>
         </div>
       </div>
-      <div className="border-2 border-black w-1/2 h-96 m-auto items-center rounded-lg">
-        Video Demo of the product
+      <div className="lg:w-1/2 h-auto m-auto items-center rounded-2xl overflow-hidden">
+        <video
+          ref={videoRef}
+          className="w-full h-auto object-contain"
+          controls
+          playsInline
+          muted
+          loop
+          preload="auto"
+        >
+          <source src="demo.mov" type="video/quicktime" />
+          <source src="demo.mov" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
     </section>
   );
