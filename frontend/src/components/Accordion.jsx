@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { ChevronDown, ChevronUp } from 'lucide-react'
+import { motion } from "motion/react";
 
 const FAQItem = ({ question, answer, isOpen, onClick }) => {
   return (
@@ -52,7 +53,12 @@ const Accordion = () => {
 
   return (
     <section className="w-auto py-12 md:py-16 lg:py-20 items-center">
-      <div className="container px-4 md:px-6">
+      <motion.div
+        initial={{ y: -30, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="container px-4 md:px-6"
+      >
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
@@ -74,9 +80,9 @@ const Accordion = () => {
             />
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
-  )
+  );
 }
 
 export default Accordion 

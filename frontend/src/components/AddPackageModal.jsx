@@ -55,12 +55,12 @@ const AddPackageModal = ({ isOpen, onClose }) => {
       onClick={onClose}
     >
       <div
-        className="bg-white p-8 rounded-xl w-full max-w-xl relative"
+        className="bg-white p-8 rounded-xl w-full sm:max-w-xl max-w-md relative"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 text-gray-400 hover:text-gray-600"
+          className="absolute right-4 top-4 text-gray-400 hover:text-gray-600 cursor-pointer"
         >
           <X className="h-5 w-5" />
         </button>
