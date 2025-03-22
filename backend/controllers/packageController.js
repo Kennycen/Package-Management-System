@@ -1,4 +1,5 @@
 import packageModel from "../models/packageModel.js";
+import emailService from "../services/emailService.js";
 
 // Get all packages for a user
 const getPackages = async (req, res) => {
@@ -17,19 +18,21 @@ const addPackage = async (req, res) => {
     const {
       trackingNumber,
       recipient,
+      email,
       apartment,
       description,
       carrier,
       size,
     } = req.body;
 
-    if (!trackingNumber || !recipient || !apartment || !carrier || !size) {
+    if (!trackingNumber || !recipient || !email || !apartment || !carrier || !size) {
       return res.json({ success: false, message: "Missing required fields" });
     }
 
     const packageData = {
       trackingNumber,
       recipient,
+      email,
       apartment,
       description,
       carrier,
@@ -68,14 +71,26 @@ const updatePackageStatus = async (req, res) => {
       return res.json({ success: false, message: "Package not found" });
     }
 
-    // Update status and corresponding dates
-    pkg.status = status;
-    if (status === "notified") {
-      pkg.notificationDate = new Date();
-    } else if (status === "picked") {
+    // If status is changing to 'notified', send email notification
+    if (status === 'notified' && pkg.status === 'arrived') {
+      try {
+        await emailService.sendPackageNotification(pkg.email, pkg);
+        pkg.notificationDate = new Date();
+      } catch (emailError) {
+        console.error('Failed to send email:', emailError);
+        return res.status(500).json({ 
+          success: false, 
+          message: 'Failed to send email notification' 
+        });
+      }
+    }
+
+    // If status is changing to 'picked', update pickup date
+    if (status === 'picked') {
       pkg.pickupDate = new Date();
     }
 
+    pkg.status = status;
     await pkg.save();
 
     res.json({ success: true, package: pkg });
@@ -97,7 +112,7 @@ const getPackagesByStatus = async (req, res) => {
     const packages = await packageModel.find({
       userId: req.user.id,
       status: status
-    });
+    }).sort({ arrivalDate: -1 });
 
     res.json({ success: true, packages });
   } catch (error) {

@@ -12,6 +12,7 @@ const AddPackageModal = ({ isOpen, onClose }) => {
     apartment: "",
     description: "",
     size: "",
+    email: "",
   });
 
   const carriers = ["UPS", "USPS", "FedEx", "DHL", "Amazon Logistics", "Other"];
@@ -25,6 +26,7 @@ const AddPackageModal = ({ isOpen, onClose }) => {
       apartment: "",
       description: "",
       size: "",
+      email: "",
     });
   };
 
@@ -134,6 +136,22 @@ const AddPackageModal = ({ isOpen, onClose }) => {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
+                Recipient Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 Apartment Number
               </label>
               <input
@@ -144,6 +162,26 @@ const AddPackageModal = ({ isOpen, onClose }) => {
                 className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Package Size
+              </label>
+              <select
+                name="size"
+                value={formData.size}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              >
+                <option value="">Select a size</option>
+                {packageSizes.map((size) => (
+                  <option key={size} value={size}>
+                    {size}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
 
@@ -158,26 +196,6 @@ const AddPackageModal = ({ isOpen, onClose }) => {
               rows="3"
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-          </div>
-
-          <div className="w-full">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Package Size
-            </label>
-            <select
-              name="size"
-              value={formData.size}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2"
-              required
-            >
-              <option value="">Select a size</option>
-              {packageSizes.map((size) => (
-                <option key={size} value={size}>
-                  {size}
-                </option>
-              ))}
-            </select>
           </div>
 
           <button

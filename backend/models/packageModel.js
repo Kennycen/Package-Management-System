@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const packageSchema = new mongoose.Schema({
   trackingNumber: { type: String, required: true, unique: true },
   recipient: { type: String, required: true },
+  email: { type: String, required: true },
   apartment: { type: String, required: true },
   description: { type: String, default: "Description of the package" },
   arrivalDate: { type: Date, required: true },
