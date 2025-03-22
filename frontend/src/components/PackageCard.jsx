@@ -72,7 +72,7 @@ const PackageCard = ({ pkg, activeStatus, onStatusChange }) => {
   };
 
   return (
-    <div className="border border-gray-400 rounded-lg p-6 shadow-lg hover:shadow-[4px_4px_0px_#000] cursor-pointer hover:-translate-y-1 duration-300">
+    <div className="border border-gray-400 rounded-lg p-6 shadow-lg hover:shadow-[4px_4px_0px_#000]  hover:-translate-y-1 duration-300">
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-2">
           <span className="font-bold text-lg">{pkg.recipient}</span>
@@ -132,7 +132,7 @@ const PackageCard = ({ pkg, activeStatus, onStatusChange }) => {
               activeStatus === 'arrived' 
                 ? 'bg-blue-600 hover:bg-blue-700' 
                 : 'bg-yellow-500 hover:bg-yellow-600'
-            } text-white transition-colors`}
+            } text-white transition-colors cursor-pointer`}
           >
             {activeStatus === 'arrived' ? 'Notify Tenant' : 'Mark as Picked Up'}
           </button>
@@ -144,7 +144,7 @@ const PackageCard = ({ pkg, activeStatus, onStatusChange }) => {
             {!showDeleteConfirm ? (
               <button
                 onClick={() => setShowDeleteConfirm(true)}
-                className="w-full py-2 text-center rounded-md border border-red-500 text-red-500 hover:bg-red-50 transition-colors flex items-center justify-center gap-2"
+                className="w-full py-2 text-center rounded-md border border-red-500 text-red-500 hover:bg-red-50 transition-colors flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Trash2 className="h-4 w-4" />
                 Delete Package
@@ -155,13 +155,13 @@ const PackageCard = ({ pkg, activeStatus, onStatusChange }) => {
                 <div className="flex gap-2">
                   <button
                     onClick={handleDelete}
-                    className="flex-1 py-2 text-center rounded-md bg-red-500 text-white hover:bg-red-600 transition-colors"
+                    className="flex-1 py-2 text-center rounded-md bg-red-500 text-white hover:bg-red-600 transition-colors cursor-pointer"
                   >
                     Yes, Delete
                   </button>
                   <button
                     onClick={() => setShowDeleteConfirm(false)}
-                    className="flex-1 py-2 text-center rounded-md border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors"
+                    className="flex-1 py-2 text-center rounded-md border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer"
                   >
                     Cancel
                   </button>

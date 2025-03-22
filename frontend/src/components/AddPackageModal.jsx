@@ -17,6 +17,17 @@ const AddPackageModal = ({ isOpen, onClose }) => {
   const carriers = ["UPS", "USPS", "FedEx", "DHL", "Amazon Logistics", "Other"];
   const packageSizes = ["Small", "Medium", "Large", "Extra Large"];
 
+  const resetForm = () => {
+    setFormData({
+      trackingNumber: "",
+      carrier: "",
+      recipient: "",
+      apartment: "",
+      description: "",
+      size: "",
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -25,6 +36,7 @@ const AddPackageModal = ({ isOpen, onClose }) => {
       const response = await packageService.addPackage(formData);
       if (response.success) {
         toast.success("Package added successfully!");
+        resetForm();
         onClose();
         if (onClose) {
           onClose(true); 
