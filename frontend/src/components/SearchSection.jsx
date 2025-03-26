@@ -42,7 +42,7 @@ const SearchSection = ({ onAddClick, onSearch, onFilterChange }) => {
         <div className='flex gap-4'>
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className={`text-black px-4 py-2 rounded-lg border border-black transition-colors cursor-pointer flex gap-2 ${
+            className={`text-black px-4 py-2 rounded-lg border border-black hover:bg-gray-200 transition-colors cursor-pointer flex gap-2 ${
               (filters.carrier || filters.size) ? 'bg-blue-100' : ''
             }`}
           >

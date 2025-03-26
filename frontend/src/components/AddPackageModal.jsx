@@ -85,10 +85,11 @@ const AddPackageModal = ({ isOpen, onClose }) => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="trackingNumber" className="block text-sm font-medium text-gray-700 mb-1">
                 Tracking Number
               </label>
               <input
+                id="trackingNumber"
                 type="text"
                 name="trackingNumber"
                 value={formData.trackingNumber}
@@ -99,10 +100,11 @@ const AddPackageModal = ({ isOpen, onClose }) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="carrier" className="block text-sm font-medium text-gray-700 mb-1">
                 Carrier
               </label>
               <select
+                id="carrier"
                 name="carrier"
                 value={formData.carrier}
                 onChange={handleChange}
@@ -121,10 +123,11 @@ const AddPackageModal = ({ isOpen, onClose }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="recipient" className="block text-sm font-medium text-gray-700 mb-1">
                 Recipient Name
               </label>
               <input
+                id="recipient"
                 type="text"
                 name="recipient"
                 value={formData.recipient}
@@ -135,10 +138,11 @@ const AddPackageModal = ({ isOpen, onClose }) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                 Recipient Email
               </label>
               <input
+                id="email"
                 type="email"
                 name="email"
                 value={formData.email}
@@ -151,10 +155,11 @@ const AddPackageModal = ({ isOpen, onClose }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="apartment" className="block text-sm font-medium text-gray-700 mb-1">
                 Apartment Number
               </label>
               <input
+                id="apartment"
                 type="text"
                 name="apartment"
                 value={formData.apartment}
@@ -165,10 +170,11 @@ const AddPackageModal = ({ isOpen, onClose }) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="size" className="block text-sm font-medium text-gray-700 mb-1">
                 Package Size
               </label>
               <select
+                id="size"
                 name="size"
                 value={formData.size}
                 onChange={handleChange}
@@ -186,10 +192,11 @@ const AddPackageModal = ({ isOpen, onClose }) => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
               Description
             </label>
             <textarea
+              id="description"
               name="description"
               value={formData.description}
               onChange={handleChange}

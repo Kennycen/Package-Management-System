@@ -94,7 +94,7 @@ A modern web application designed to streamline the process of **receiving, noti
 
 - Frontend tests can be run with:
   ```bash
-  npm test
+  npm run test
   ```
 
 ## 🚀 Deployment
