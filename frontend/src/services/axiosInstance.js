@@ -28,13 +28,10 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response) {
-      // Server responded with error status
       console.error('Response Error:', error.response.data);
     } else if (error.request) {
-      // Request was made but no response
       console.error('Network Error:', error.request);
     } else {
-      // Other errors
       console.error('Error:', error.message);
     }
     return Promise.reject(error);

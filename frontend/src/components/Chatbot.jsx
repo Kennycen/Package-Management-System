@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BotMessageSquare, X, Send } from 'lucide-react';
 import { chatService } from '../services/chatApi';
 import { toast } from 'react-toastify';
+import ReactMarkdown from 'react-markdown';
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,6 +38,41 @@ const Chatbot = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const renderMessage = (text, sender) => {
+    if (sender === 'user') {
+      return <div className="text-white">{text}</div>;
+    }
+    return (
+      <div className="prose prose-sm max-w-none">
+        <ReactMarkdown
+          components={{
+            p: ({ children }) => <p className="mb-2">{children}</p>,
+            ul: ({ children }) => <ul className="list-disc pl-4 mb-2">{children}</ul>,
+            ol: ({ children }) => <ol className="list-decimal pl-4 mb-2">{children}</ol>,
+            li: ({ children }) => <li className="mb-1">{children}</li>,
+            code: ({ children }) => (
+              <code className="bg-gray-100 px-1 py-0.5 rounded text-sm font-mono">
+                {children}
+              </code>
+            ),
+            pre: ({ children }) => (
+              <pre className="bg-gray-100 p-2 rounded text-sm font-mono overflow-x-auto">
+                {children}
+              </pre>
+            ),
+            a: ({ href, children }) => (
+              <a href={href} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
+                {children}
+              </a>
+            ),
+          }}
+        >
+          {text}
+        </ReactMarkdown>
+      </div>
+    );
   };
 
   return (
@@ -95,7 +131,7 @@ const Chatbot = () => {
                         : 'bg-gray-100 text-gray-800 rounded-bl-none'
                     }`}
                   >
-                    {msg.text}
+                    {renderMessage(msg.text, msg.sender)}
                   </div>
                 </div>
               ))

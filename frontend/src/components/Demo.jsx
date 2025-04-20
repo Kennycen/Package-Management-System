@@ -54,6 +54,7 @@ const Demo = () => {
             initial={{ y: -30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
+            className="font-semibold"
           >
             Check our Demo
           </motion.h3>
@@ -67,7 +68,12 @@ const Demo = () => {
           </motion.h2>
         </div>
       </div>
-      <div className="lg:w-1/2 h-auto m-auto items-center rounded-2xl overflow-hidden">
+      <motion.div 
+        initial={{ scale: 0.9, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.8, type: "spring", stiffness: 40 }}
+        className="lg:w-1/2 h-auto m-auto items-center rounded-2xl overflow-hidden bg-white shadow-xl"
+      >
         <video
           ref={videoRef}
           className="w-full h-auto object-contain"
@@ -81,7 +87,7 @@ const Demo = () => {
           <source src="demo.mov" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-      </div>
+      </motion.div>
     </section>
   );
 }

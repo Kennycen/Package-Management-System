@@ -4,24 +4,32 @@ import { motion } from "motion/react";
 
 const FAQItem = ({ question, answer, isOpen, onClick }) => {
   return (
-    <div className="border-b">
+    <motion.div 
+      whileHover={{ scale: 1.02 }}
+      className="border-b border-purple-100 bg-white rounded-lg p-4 mb-4 shadow-md hover:shadow-lg transition-all duration-300"
+    >
       <button
         className="flex w-full items-center justify-between py-4 text-left cursor-pointer"
         onClick={onClick}
       >
-        <span className="font-medium">{question}</span>
+        <span className="font-medium text-gray-800">{question}</span>
         {isOpen ? (
-          <ChevronUp className="h-5 w-5 text-gray-500" />
+          <ChevronUp className="h-5 w-5 text-purple-600" />
         ) : (
-          <ChevronDown className="h-5 w-5 text-gray-500" />
+          <ChevronDown className="h-5 w-5 text-purple-600" />
         )}
       </button>
       {isOpen && (
-        <div className="pb-4 text-gray-600">
+        <motion.div 
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="pb-4 text-gray-600"
+        >
           {answer}
-        </div>
+        </motion.div>
       )}
-    </div>
+    </motion.div>
   )
 }
 
@@ -61,10 +69,10 @@ const Accordion = () => {
       >
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl ">
               Frequently Asked Questions
             </h2>
-            <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Common questions about our package management system
             </p>
           </div>
