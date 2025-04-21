@@ -6,7 +6,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { AppContext } from '../../context/AppContext';
 import Home from '../Home';
 
-// Mock IntersectionObserver
 class IntersectionObserver {
   observe = vi.fn();
   disconnect = vi.fn();

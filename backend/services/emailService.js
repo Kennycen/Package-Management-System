@@ -92,7 +92,7 @@ const emailService = {
               .button {
                 display: inline-block;
                 padding: 12px 24px;
-                background-color: #2563eb;
+                background-color: #000000;
                 color: white;
                 text-decoration: none;
                 border-radius: 6px;
@@ -121,24 +121,24 @@ const emailService = {
                 
                 <div class="package-details">
                   <div class="detail-row">
-                    <span class="detail-label">Tracking Number: </span>
+                    <span class="detail-label">Tracking Number:&nbsp;</span>
                     <span class="detail-value">${packageDetails.trackingNumber}</span>
                   </div>
                   <div class="detail-row">
-                    <span class="detail-label">Carrier: </span>
+                    <span class="detail-label">Carrier:&nbsp;</span>
                     <span class="detail-value">${packageDetails.carrier}</span>
                   </div>
                   <div class="detail-row">
-                    <span class="detail-label">Apartment: </span>
+                    <span class="detail-label">Apartment:</span>
                     <span class="detail-value">${packageDetails.apartment}</span>
                   </div>
                   <div class="detail-row">
-                    <span class="detail-label">Size: </span>
+                    <span class="detail-label">Size:</span>
                     <span class="detail-value">${packageDetails.size}</span>
                   </div>
                   ${packageDetails.description ? `
                     <div class="detail-row">
-                      <span class="detail-label">Description: </span>
+                      <span class="detail-label">Description:</span>
                       <span class="detail-value">${packageDetails.description}</span>
                     </div>
                   ` : ''}
