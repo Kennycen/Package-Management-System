@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
-import { assets } from "../assets/assets";
-import { User, Mail, Lock } from "lucide-react";
+import { User, Mail, Lock, X } from "lucide-react";
 import { AppContext } from "../context/AppContext";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -8,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [state, setState] = useState("Login");
-  const { setShowLogin, backendUrl, setToken, setUser } = useContext(AppContext);
+  const { setShowLogin, backendUrl, setToken, setUser } =
+    useContext(AppContext);
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -31,7 +31,7 @@ const Login = () => {
           localStorage.setItem("token", data.token);
           setShowLogin(false);
           setTimeout(() => {
-            navigate('/dashboard');
+            navigate("/dashboard");
           }, 0);
         } else {
           toast.error(data.message);
@@ -49,14 +49,14 @@ const Login = () => {
           localStorage.setItem("token", data.token);
           setShowLogin(false);
           setTimeout(() => {
-            navigate('/dashboard');
+            navigate("/dashboard");
           }, 0);
         } else {
           toast.error(data.message);
         }
       }
     } catch (error) {
-      toast.error(error.message)
+      toast.error(error.message);
     }
   };
 
@@ -65,7 +65,7 @@ const Login = () => {
   };
 
   return (
-    <div 
+    <div
       className="fixed inset-0 bg-black/30 backdrop-blur-sm flex justify-center items-center"
       style={{ zIndex: 1000 }}
       onClick={handleClose}
@@ -84,7 +84,7 @@ const Login = () => {
           <div className="border px-5 py-2 flex items-center gap-2 rounded-lg mt-5">
             <User className="h-4 w-4" />
             <input
-              onChange={e => setName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
               value={name}
               type="text"
               placeholder="Full Name"
@@ -97,7 +97,7 @@ const Login = () => {
         <div className="border px-5 py-2 flex items-center gap-2 rounded-lg mt-4">
           <Mail className="h-4 w-4" />
           <input
-            onChange={e => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             value={email}
             type="email"
             placeholder="Email address"
@@ -108,7 +108,7 @@ const Login = () => {
         <div className="border px-5 py-2 flex items-center gap-2 rounded-lg mt-4">
           <Lock className="h-4 w-4" />
           <input
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             value={password}
             type="password"
             placeholder="Password"
@@ -144,12 +144,9 @@ const Login = () => {
             </span>
           </p>
         )}
-
-        <img
+        <X
           onClick={handleClose}
-          src={assets.cross_icon}
-          className="absolute top-5 right-5 cursor-pointer"
-          alt=""
+          className="absolute top-3 right-3 cursor-pointer"
         />
       </form>
     </div>

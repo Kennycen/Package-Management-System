@@ -13,7 +13,7 @@ const emailService = {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: recipientEmail,
-      subject: 'Your Package Has Arrived!',
+      subject: "Your Package Has Arrived!",
       html: `
         <!DOCTYPE html>
         <html>
@@ -80,6 +80,7 @@ const emailService = {
               .detail-value {
                 color: #1e293b;
                 font-weight: 600;
+                font-size: 1.5rem;
               }
               .footer {
                 text-align: center;
@@ -93,18 +94,20 @@ const emailService = {
                 display: inline-block;
                 padding: 12px 24px;
                 background-color: #000000;
-                color: white;
+                color: #ffffff;
                 text-decoration: none;
                 border-radius: 6px;
                 font-weight: 500;
                 margin: 20px 0;
+                transition: all 0.3s, ease-in-out;
               }
               .button:hover {
-                background-color: #1d4ed8;
+                background-color: #1a1a1a;
               }
               .highlight {
                 color: #2563eb;
                 font-weight: 600;
+                font-size: 1.5rem;
               }
             </style>
           </head>
@@ -115,39 +118,51 @@ const emailService = {
               </div>
               
               <div class="content">
-                <p>Dear <span class="highlight">${packageDetails.recipient}</span>,</p>
+                <p>Dear <span class="highlight">${
+                  packageDetails.recipient
+                }</span>,</p>
                 
                 <p>We're pleased to inform you that your package has arrived at our facility. Here are the details:</p>
                 
                 <div class="package-details">
                   <div class="detail-row">
                     <span class="detail-label">Tracking Number:&nbsp;</span>
-                    <span class="detail-value">${packageDetails.trackingNumber}</span>
+                    <span class="detail-value">${
+                      packageDetails.trackingNumber
+                    }</span>
                   </div>
                   <div class="detail-row">
                     <span class="detail-label">Carrier:&nbsp;</span>
                     <span class="detail-value">${packageDetails.carrier}</span>
                   </div>
                   <div class="detail-row">
-                    <span class="detail-label">Apartment:</span>
-                    <span class="detail-value">${packageDetails.apartment}</span>
+                    <span class="detail-label">Apartment:&nbsp;</span>
+                    <span class="detail-value">${
+                      packageDetails.apartment
+                    }</span>
                   </div>
                   <div class="detail-row">
-                    <span class="detail-label">Size:</span>
+                    <span class="detail-label">Size:&nbsp;</span>
                     <span class="detail-value">${packageDetails.size}</span>
                   </div>
-                  ${packageDetails.description ? `
+                  ${
+                    packageDetails.description
+                      ? `
                     <div class="detail-row">
-                      <span class="detail-label">Description:</span>
+                      <span class="detail-label">Description:&nbsp;</span>
                       <span class="detail-value">${packageDetails.description}</span>
                     </div>
-                  ` : ''}
+                  `
+                      : ""
+                  }
                 </div>
 
                 <p>Please pick up your package at your earliest convenience. If you have any questions, feel free to contact us.</p>
                 
                 <div style="text-align: center;">
-                  <a href="mailto:${process.env.EMAIL_USER}" class="button">Contact Support</a>
+                  <a href="mailto:${
+                    process.env.EMAIL_USER
+                  }" class="button">Contact Support</a>
                 </div>
               </div>
 

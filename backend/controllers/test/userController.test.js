@@ -4,7 +4,7 @@ import userModel from '../../models/userModel';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-// ✅ Mock dependencies
+// Mock dependencies
 vi.mock('bcrypt');
 vi.mock('jsonwebtoken');
 
@@ -19,7 +19,7 @@ describe('User Controller Unit Tests', () => {
     vi.clearAllMocks();
   });
 
-  // ✅ Test registerUser
+  // Test registerUser
   describe('registerUser', () => {
     it('should return error if missing fields', async () => {
       await registerUser(req, res);
@@ -30,7 +30,7 @@ describe('User Controller Unit Tests', () => {
     });
   });
 
-  // ✅ Test loginUser
+  // Test loginUser
   describe('loginUser', () => {
     it('should return error if user does not exist', async () => {
       req.body = {
