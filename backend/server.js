@@ -8,7 +8,9 @@ import chatRouter from './routes/chatRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
+connectDB();
 
+app.use(express.json());
 app.use(cors({
   origin: true, 
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -16,9 +18,7 @@ app.use(cors({
   credentials: true
 }));
 
-app.use(express.json());
-connectDB();
-
+// API Endpoints
 app.use('/api/user', userRouter);
 app.use('/api/package', packageRouter);
 app.use('/api/chat', chatRouter);

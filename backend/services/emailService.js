@@ -80,7 +80,6 @@ const emailService = {
               .detail-value {
                 color: #1e293b;
                 font-weight: 600;
-                font-size: 1.5rem;
               }
               .footer {
                 text-align: center;
@@ -94,8 +93,8 @@ const emailService = {
                 display: inline-block;
                 padding: 12px 24px;
                 background-color: #000000;
-                color: #ffffff;
-                text-decoration: none;
+                color: #ffffff !important;
+                text-decoration: none !important;
                 border-radius: 6px;
                 font-weight: 500;
                 margin: 20px 0;
@@ -107,7 +106,7 @@ const emailService = {
               .highlight {
                 color: #2563eb;
                 font-weight: 600;
-                font-size: 1.5rem;
+                font-size: 1.1rem;
               }
             </style>
           </head>
