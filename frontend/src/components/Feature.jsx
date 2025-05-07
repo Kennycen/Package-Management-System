@@ -47,7 +47,7 @@ const Feature = () => {
           whileHover={{ scale: 1.05 }}
           className="flex flex-col items-center space-y-2 rounded-xl border border-purple-100 p-6 shadow-lg bg-white hover:shadow-xl transition-all duration-300"
         >
-          <div className="rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 p-3">
+          <div className="rounded-full bg-gradient-to-r from-red-400 to-red-500 p-3">
             <Package className="h-6 w-6 text-white" />
           </div>
           <h3 className="text-xl font-bold text-gray-800">Package Tracking</h3>
@@ -60,20 +60,20 @@ const Feature = () => {
           whileHover={{ scale: 1.05 }}
           className="flex flex-col items-center space-y-2 rounded-xl border border-purple-100 p-6 shadow-lg bg-white hover:shadow-xl transition-all duration-300"
         >
-          <div className="rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 p-3">
+          <div className="rounded-full bg-gradient-to-r from-red-400 to-red-500 p-3">
             <Bell className="h-6 w-6 text-white" />
           </div>
           <h3 className="text-xl font-bold text-gray-800">Tenant Notifications</h3>
           <p className="text-center text-gray-600">
-            Automatically notify tenants when their packages arrive via email,
-            SMS, or app notifications.
+            Automatically notify tenants when their packages arrive via email and
+            SMS.
           </p>
         </motion.div>
         <motion.div 
           whileHover={{ scale: 1.05 }}
           className="flex flex-col items-center space-y-2 rounded-xl border border-purple-100 p-6 shadow-lg bg-white hover:shadow-xl transition-all duration-300"
         >
-          <div className="rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 p-3">
+          <div className="rounded-full bg-gradient-to-r from-red-400 to-red-500 p-3">
             <CheckCircle2 className="h-6 w-6 text-white" />
           </div>
           <h3 className="text-xl font-bold text-gray-800">Pickup Management</h3>
@@ -86,7 +86,7 @@ const Feature = () => {
           whileHover={{ scale: 1.05 }}
           className="flex flex-col items-center space-y-2 rounded-xl border border-purple-100 p-6 shadow-lg bg-white hover:shadow-xl transition-all duration-300"
         >
-          <div className="rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 p-3">
+          <div className="rounded-full bg-gradient-to-r from-red-400 to-red-500 p-3">
             <Clock className="h-6 w-6 text-white" />
           </div>
           <h3 className="text-xl font-bold text-gray-800">Aging Alerts</h3>
@@ -99,7 +99,7 @@ const Feature = () => {
           whileHover={{ scale: 1.05 }}
           className="flex flex-col items-center space-y-2 rounded-xl border border-purple-100 p-6 shadow-lg bg-white hover:shadow-xl transition-all duration-300"
         >
-          <div className="rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 p-3">
+          <div className="rounded-full bg-gradient-to-r from-red-400 to-red-500 p-3">
             <PackageCheck className="h-6 w-6 text-white" />
           </div>
           <h3 className="text-xl font-bold text-gray-800">Reporting & Analytics</h3>
@@ -112,7 +112,7 @@ const Feature = () => {
           whileHover={{ scale: 1.05 }}
           className="flex flex-col items-center space-y-2 rounded-xl border border-purple-100 p-6 shadow-lg bg-white hover:shadow-xl transition-all duration-300"
         >
-          <div className="rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 p-3">
+          <div className="rounded-full bg-gradient-to-r from-red-400 to-red-500 p-3">
             <Shield className="h-6 w-6 text-white" />
           </div>
           <h3 className="text-xl font-bold text-gray-800">Secure Access</h3>

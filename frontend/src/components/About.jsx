@@ -43,14 +43,11 @@ const About = () => {
           className="flex flex-col justify-center space-y-4 lg:w-[50rem] lg:pl-4"
         >
           <div className="space-y-2">
-            <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl">
+            <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl mb-8">
               What our team is trying to provide you
             </h1>
             <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, quo
-              distinctio, et eaque laborum sit modi nulla reiciendis consectetur
-              reprehenderit nesciunt ducimus accusamus aliquam itaque dolore in
-              necessitatibus culpa quod.
+              We're revolutionizing package management for modern residential and commercial properties. Our system streamlines the entire package handling process, from arrival to pickup, ensuring secure and efficient delivery management.
             </p>
           </div>
         </motion.div>

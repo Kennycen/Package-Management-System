@@ -81,7 +81,7 @@ const Chatbot = () => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-black text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors flex items-center gap-2 cursor-pointer"
+          className="bg-black text-white p-4 rounded-full shadow-lg hover:bg-red-700 transition-colors flex items-center gap-2 cursor-pointer"
         >
           <BotMessageSquare className="h-6 w-6" />
         </button>
@@ -91,7 +91,7 @@ const Chatbot = () => {
       {isOpen && (
         <div className="bg-white rounded-lg shadow-xl w-[350px] h-[500px] flex flex-col">
           {/* Chat Header */}
-          <div className="p-4 bg-blue-600 text-white rounded-t-lg flex justify-between items-center">
+          <div className="p-4 bg-red-700 text-white rounded-t-lg flex justify-between items-center">
             <div className="flex items-center gap-2">
               <BotMessageSquare className="h-5 w-5" />
               <h3 className="font-semibold">Package Assistant</h3>
@@ -127,7 +127,7 @@ const Chatbot = () => {
                   <div
                     className={`max-w-[80%] p-3 rounded-lg ${
                       msg.sender === 'user'
-                        ? 'bg-blue-600 text-white rounded-br-none'
+                        ? 'bg-gray-500 text-white rounded-br-none'
                         : 'bg-gray-100 text-gray-800 rounded-bl-none'
                     }`}
                   >
@@ -157,12 +157,12 @@ const Chatbot = () => {
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 placeholder="Ask about our website..."
-                className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
                 disabled={isLoading}
               />
               <button
                 type="submit"
-                className="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition-colors disabled:bg-gray-400"
+                className="bg-red-600/90 text-white p-2 rounded-lg hover:bg-red-700 transition-colors disabled:bg-gray-400 cursor-pointer"
                 disabled={!inputMessage.trim() || isLoading}
               >
                 <Send className="h-5 w-5" />

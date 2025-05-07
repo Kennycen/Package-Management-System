@@ -14,9 +14,9 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
       >
         <span className="font-medium text-gray-800">{question}</span>
         {isOpen ? (
-          <ChevronUp className="h-5 w-5 text-purple-600" />
+          <ChevronUp className="h-5 w-5 text-red-600" />
         ) : (
-          <ChevronDown className="h-5 w-5 text-purple-600" />
+          <ChevronDown className="h-5 w-5 text-red-600" />
         )}
       </button>
       {isOpen && (
@@ -39,11 +39,11 @@ const Accordion = () => {
   const faqs = [
     {
       question: "How does the package notification system work?",
-      answer: "When a package arrives, our system allows staff to log it immediately. Residents receive automatic notifications through their preferred method (email, SMS, or app), informing them about their package arrival and pickup location."
+      answer: "When a package arrives, our system allows staff to log it immediately. Residents receive automatic notifications through their preferred method (email, SMS), informing them about their package arrival."
     },
     {
       question: "What types of packages can be managed through the system?",
-      answer: "Our system can handle all types of packages, from standard deliveries to special items like perishables, oversized packages, and sensitive materials. Each package can be tagged with specific handling instructions and priority levels."
+      answer: "Our system can handle all types of packages, from standard deliveries to special items like perishables, oversized packages, and sensitive materials. Each package can be tagged with specific handling instructions, meaning tenants can be prepared when they are picking up their package."
     },
     {
       question: "Is the system secure?",
@@ -51,7 +51,7 @@ const Accordion = () => {
     },
     {
       question: "Can residents track their package status?",
-      answer: "Yes, residents can track their package status through our resident portal or mobile app. They can view when packages arrived, where they're stored, and confirm successful pickup."
+      answer: "No, residents are notified by the system when their package arrived at the building complex and the staff successfully received it. Tenants will be notified by email or SMS and pick up their package at their convenience."
     },
     {
       question: "What happens if a package isn't picked up?",

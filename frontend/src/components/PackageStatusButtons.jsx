@@ -42,7 +42,7 @@ const PackageStatusButtons = () => {
             onClick={() => handleStatusChange('arrived')}
             className={`flex-1 px-6 py-3 rounded-lg font-medium transition-all cursor-pointer ${
               activeStatus === 'arrived'
-                ? 'bg-white shadow-sm text-blue-600'
+                ? 'bg-white shadow-sm text-red-600'
                 : 'text-gray-600 hover:text-gray-800'
             }`}
           >
@@ -57,7 +57,7 @@ const PackageStatusButtons = () => {
             onClick={() => handleStatusChange('notified')}
             className={`flex-1 px-6 py-3 rounded-lg font-medium transition-all cursor-pointer ${
               activeStatus === 'notified'
-                ? 'bg-white shadow-sm text-blue-600'
+                ? 'bg-white shadow-sm text-red-600'
                 : 'text-gray-600 hover:text-gray-800'
             }`}
           >
@@ -72,7 +72,7 @@ const PackageStatusButtons = () => {
             onClick={() => handleStatusChange('picked')}
             className={`flex-1 px-6 py-3 rounded-lg font-medium transition-all cursor-pointer ${
               activeStatus === 'picked'
-                ? 'bg-white shadow-sm text-blue-600'
+                ? 'bg-white shadow-sm text-red-600'
                 : 'text-gray-600 hover:text-gray-800'
             }`}
           >

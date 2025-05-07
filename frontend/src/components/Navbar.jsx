@@ -31,25 +31,25 @@ const Navbar = () => {
           <div className="flex items-center gap-6">
             <button
               onClick={() => scrollToSection("feature")}
-              className="cursor-pointer hover:text-gray-600"
+              className="cursor-pointer hover:text-gray-600 font-semibold"
             >
               Feature
             </button>
             <button
               onClick={() => scrollToSection("about")}
-              className="cursor-pointer hover:text-gray-600"
+              className="cursor-pointer hover:text-gray-600 font-semibold"
             >
               About
             </button>
             <button
               onClick={() => scrollToSection("demo")}
-              className="cursor-pointer hover:text-gray-600"
+              className="cursor-pointer hover:text-gray-600 font-semibold"
             >
               Demo
             </button>
             <button
               onClick={() => setShowLogin(true)}
-              className="rounded-md py-2 px-4 bg-black text-white cursor-pointer hover:bg-gray-800"
+              className="rounded-md py-2 px-4 bg-red-500/90 text-white cursor-pointer hover:bg-red-700 transition-colors font-semibold"
             >
               Login
             </button>

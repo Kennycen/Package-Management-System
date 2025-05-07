@@ -37,7 +37,7 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.9 }}
             onClick={() => setShowLogin(true)}
             href="/dashboard"
-            className="border border-black py-3 px-7 w-36 rounded-md hover:bg-gray-800 transition-colors bg-black text-white cursor-pointer"
+            className="py-3 px-7 w-36 rounded-md hover:bg-red-700 transition-colors bg-red-500/90 text-white cursor-pointer"
           >
             Get Started
           </motion.button>

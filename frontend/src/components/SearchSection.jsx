@@ -35,7 +35,7 @@ const SearchSection = ({ onAddClick, onSearch, onFilterChange }) => {
           <input
             type="text"
             placeholder="Search by name or tracking number..."
-            className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
             onChange={handleSearch}
           />
         </div>
@@ -43,20 +43,20 @@ const SearchSection = ({ onAddClick, onSearch, onFilterChange }) => {
           <button
             onClick={() => setShowFilters(!showFilters)}
             className={`text-black px-4 py-2 rounded-lg border border-black hover:bg-gray-200 transition-colors cursor-pointer flex gap-2 ${
-              (filters.carrier || filters.size) ? 'bg-blue-100' : ''
+              (filters.carrier || filters.size) ? 'bg-red-100' : ''
             }`}
           >
             <Filter />
             Filter
             {(filters.carrier || filters.size) && 
-              <span className="bg-blue-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+              <span className="bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
                 {(filters.carrier ? 1 : 0) + (filters.size ? 1 : 0)}
               </span>
             }
           </button>
           <button
             onClick={onAddClick}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors cursor-pointer flex gap-2"
+            className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors cursor-pointer flex gap-2"
           >
             <Plus />
             Add New Package
@@ -87,7 +87,7 @@ const SearchSection = ({ onAddClick, onSearch, onFilterChange }) => {
               <select
                 value={filters.carrier}
                 onChange={(e) => handleFilterChange('carrier', e.target.value)}
-                className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
               >
                 <option value="">All Carriers</option>
                 {carriers.map((carrier) => (
@@ -104,7 +104,7 @@ const SearchSection = ({ onAddClick, onSearch, onFilterChange }) => {
               <select
                 value={filters.size}
                 onChange={(e) => handleFilterChange('size', e.target.value)}
-                className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
               >
                 <option value="">All Sizes</option>
                 {sizes.map((size) => (

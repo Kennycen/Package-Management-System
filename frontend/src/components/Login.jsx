@@ -117,17 +117,17 @@ const Login = () => {
           />
         </div>
 
-        <p className="text-sm text-blue-600 my-4 cursor-pointer">
+        <p className="text-sm text-red-600 my-4 cursor-pointer hover:text-red-800">
           Forgot password?
         </p>
-        <button className="bg-blue-600 w-full text-white py-2 rounded-lg cursor-pointer">
+        <button className="bg-black w-full text-white py-2 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors">
           {state === "Login" ? "Login" : "Create account"}
         </button>
         {state === "Login" ? (
           <p className="mt-5 text-center">
             Don't have an account?{" "}
             <span
-              className="text-blue-600 cursor-pointer"
+              className="text-red-600 cursor-pointer hover:text-red-800"
               onClick={() => setState("Sign Up")}
             >
               Sign up
@@ -137,7 +137,7 @@ const Login = () => {
           <p className="mt-5 text-center">
             Already have an account?{" "}
             <span
-              className="text-blue-600 cursor-pointer"
+              className="text-red-600 cursor-pointer hover:text-red-800"
               onClick={() => setState("Login")}
             >
               Login
