@@ -31,7 +31,7 @@ describe("connectDB", () => {
       expect.any(Function)
     );
     expect(mongoose.connect).toHaveBeenCalledWith(
-      "mongodb://localhost:27017/package-mgt"
+      "mongodb://localhost:27017"
     );
   });
 

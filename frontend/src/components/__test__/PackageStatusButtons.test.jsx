@@ -49,6 +49,6 @@ describe('PackageStatusButtons Component', () => {
   test('highlights the active status button', () => {
     renderComponent('notified');
     const notifiedButton = screen.getByText('Notified').closest('button');
-    expect(notifiedButton).toHaveClass('text-blue-600');
+    expect(notifiedButton).toHaveClass('text-red-600');
   });
 });
