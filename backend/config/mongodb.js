@@ -11,7 +11,7 @@ const connectDB = async () => {
             process.exit(1);
         })
 
-        await mongoose.connect(process.env.MONGODB_URI + '/package-mgt')
+        await mongoose.connect(process.env.MONGODB_URI)
     } catch (error) {
         console.error('Failed to connect to MongoDB:', error);
         process.exit(1);
