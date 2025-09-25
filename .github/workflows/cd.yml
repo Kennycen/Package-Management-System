@@ -25,10 +25,30 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
+            # Navigate to application directory
             cd /home/ubuntu/package-management-system
+
+            # Pull latest changes
             git pull origin main
-            export MONGODB_URI="${{ secrets.MONGODB_URI }}"
-            export JWT_SECRET="${{ secrets.JWT_SECRET }}"
+
+            # Create .env file with secrets
+            cat > .env <<EOF
+            MONGODB_URI=${{ secrets.MONGODB_URI }}
+            JWT_SECRET=${{ secrets.JWT_SECRET }}
+            NODE_ENV=production
+            PORT=4000
+            EOF
+
+            # Stop old containers
             docker compose -f docker-compose.prod.yml down
+
+            # Start new containers
             docker compose -f docker-compose.prod.yml up -d --build
+
+            # Clean up old images
             docker image prune -f
+
+            # Verify deployment
+            sleep 10
+            docker ps
+            docker logs package-management-backend-prod --tail 20

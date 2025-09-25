@@ -12,6 +12,9 @@ services:
       - MONGODB_URI=${MONGODB_URI}
       - JWT_SECRET=${JWT_SECRET}
       - PORT=4000
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
+      - GOOGLE_AI_API_KEY=${GOOGLE_AI_API_KEY}
     networks:
       - package-management-network
     healthcheck:
