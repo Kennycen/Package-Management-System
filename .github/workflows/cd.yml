@@ -25,30 +25,29 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            # Navigate to application directory
-            cd /home/ubuntu/package-management-system
+            cd /home/ubuntu/Package-Management-System
 
-            # Pull latest changes
+            # Pull latest code
             git pull origin main
 
-            # Create .env file with secrets
+            # Write .env next to docker-compose.prod.yml
             cat > .env <<EOF
             MONGODB_URI=${{ secrets.MONGODB_URI }}
             JWT_SECRET=${{ secrets.JWT_SECRET }}
             NODE_ENV=production
             PORT=4000
+            EMAIL_USER=${{ secrets.EMAIL_USER }}
+            EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }}
+            GOOGLE_AI_API_KEY=${{ secrets.GOOGLE_AI_API_KEY }}
             EOF
 
-            # Stop old containers
-            docker compose -f docker-compose.prod.yml down
+            # Optional: quick sanity check (won't print secrets)
+            echo "Wrote .env in $(pwd)"
+            sed -n '1,3p' .env || true
 
-            # Start new containers
+            # Restart containers
+            docker compose -f docker-compose.prod.yml down
             docker compose -f docker-compose.prod.yml up -d --build
 
-            # Clean up old images
+            # Optional cleanup
             docker image prune -f
-
-            # Verify deployment
-            sleep 10
-            docker ps
-            docker logs package-management-backend-prod --tail 20
