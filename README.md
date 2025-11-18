@@ -1,17 +1,17 @@
-# 📦 Package Management System
+# Package Management System
 
 A modern, full-stack web application designed to streamline package management in residential and commercial buildings. This system allows front desk staff to efficiently **log, track, and manage package deliveries** with automated tenant notifications.
 
 ## Features
 
-- **📬 Package Tracking** – Log and track incoming packages with detailed information
-- **🔔 Smart Notifications** – Automated email notifications when packages arrive
-- **�� Secure Authentication** – JWT-based authentication for front desk staff
-- **📊 Status Management** – Three-stage workflow: **Arrived → Notified → Picked Up**
-- **�� Advanced Search** – Filter packages by tenant, carrier, date, or status
-- **📱 Responsive Design** – Works seamlessly on desktop, tablet, and mobile
-- **🤖 AI Chatbot** – Built-in assistant for package management queries
-- **📈 Analytics** – Track package volume and pickup patterns
+- **Package Tracking** – Log and track incoming packages with detailed information
+- **Smart Notifications** – Automated email notifications when packages arrive
+- **Secure Authentication** – JWT-based authentication for front desk staff
+- **Status Management** – Three-stage workflow: **Arrived → Notified → Picked Up**
+- **Advanced Search** – Filter packages by tenant, carrier, date, or status
+- **Responsive Design** – Works seamlessly on desktop, tablet, and mobile
+- **AI Chatbot** – Built-in assistant for package management queries
+- **Analytics** – Track package volume and pickup patterns
 
 ## Architecture
 
