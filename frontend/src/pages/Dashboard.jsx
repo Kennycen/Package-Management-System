@@ -1,26 +1,26 @@
-import React, { useState, useContext } from 'react'
-import DashboardNavbar from '../components/DashboardNavbar'
-import SearchSection from '../components/SearchSection'
-import PackageStatusButtons from '../components/PackageStatusButtons'
-import PackageList from '../components/PackageList'
-import AddPackageModal from '../components/AddPackageModal'
-import Chatbot from '../components/Chatbot'
-import { AppContext } from '../context/AppContext'
+import React, { useState, useContext } from "react";
+import DashboardNavbar from "../components/DashboardNavbar";
+import SearchSection from "../components/SearchSection";
+import PackageStatusButtons from "../components/PackageStatusButtons";
+import PackageList from "../components/PackageList";
+import AddPackageModal from "../components/AddPackageModal";
+import Chatbot from "../components/Chatbot";
+import { AppContext } from "../context/AppContext";
 
 const Dashboard = () => {
   const { activeStatus } = useContext(AppContext);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [filters, setFilters] = useState({
-    carrier: '',
-    size: ''
+    carrier: "",
+    size: "",
   });
 
   const handleModalClose = (shouldRefresh = false) => {
     setIsAddModalOpen(false);
     if (shouldRefresh) {
-      setRefreshTrigger(prev => prev + 1);
+      setRefreshTrigger((prev) => prev + 1);
     }
   };
 
@@ -42,26 +42,23 @@ const Dashboard = () => {
             Manage incoming packages and tenant notifications
           </h3>
         </div>
-        <SearchSection 
-          onAddClick={() => setIsAddModalOpen(true)} 
+        <SearchSection
+          onAddClick={() => setIsAddModalOpen(true)}
           onSearch={handleSearch}
           onFilterChange={handleFilterChange}
         />
         <PackageStatusButtons refreshTrigger={refreshTrigger} />
-        <PackageList 
-          activeStatus={activeStatus} 
+        <PackageList
+          activeStatus={activeStatus}
           refreshTrigger={refreshTrigger}
           searchQuery={searchQuery}
           filters={filters}
         />
-        <AddPackageModal
-          isOpen={isAddModalOpen}
-          onClose={handleModalClose}
-        />
+        <AddPackageModal isOpen={isAddModalOpen} onClose={handleModalClose} />
       </div>
       <Chatbot />
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

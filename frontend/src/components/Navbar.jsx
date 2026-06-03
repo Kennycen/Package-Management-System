@@ -1,18 +1,18 @@
-import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { Package, Menu, X } from "lucide-react";
-import { AppContext } from '../context/AppContext';
+import { AppContext } from "../context/AppContext";
 
 const Navbar = () => {
-  const {setShowLogin} = useContext(AppContext);
+  const { setShowLogin } = useContext(AppContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
       });
     }
     setIsMenuOpen(false);
@@ -104,6 +104,6 @@ const Navbar = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Navbar
+export default Navbar;

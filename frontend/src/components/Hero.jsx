@@ -1,11 +1,10 @@
-import React, { useContext } from 'react'
-import { assets } from '../assets/assets';
-import { AppContext } from '../context/AppContext';
+import React, { useContext } from "react";
+import { assets } from "../assets/assets";
+import { AppContext } from "../context/AppContext";
 import { motion } from "motion/react";
 
 const Hero = () => {
-
-  const {setShowLogin} = useContext(AppContext);
+  const { setShowLogin } = useContext(AppContext);
 
   return (
     <section className="w-full py-10 md:py-24 lg:py-28">
@@ -54,6 +53,6 @@ const Hero = () => {
       </div>
     </section>
   );
-}
+};
 
-export default Hero
+export default Hero;

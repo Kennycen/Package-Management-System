@@ -5,11 +5,11 @@ export const AppContext = createContext();
 const AppContextProvider = (props) => {
   const [user, setUser] = useState(null);
   const [showLogin, setShowLogin] = useState(false);
-  const [token, setToken] = useState(localStorage.getItem('token'));
-  const [activeStatus, setActiveStatus] = useState('arrived');
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [activeStatus, setActiveStatus] = useState("arrived");
 
-    const backendUrl =
-      import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
+  const backendUrl =
+    import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
 
   const value = {
     user,
@@ -24,11 +24,8 @@ const AppContextProvider = (props) => {
   };
 
   return (
-    <AppContext.Provider value={value}>
-      {props.children}
-    </AppContext.Provider>
+    <AppContext.Provider value={value}>{props.children}</AppContext.Provider>
   );
 };
 
 export default AppContextProvider;
-

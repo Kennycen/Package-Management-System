@@ -1,13 +1,13 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, test, expect, vi, beforeEach } from 'vitest';
-import '@testing-library/jest-dom';
-import { BrowserRouter } from 'react-router-dom';
-import { AppContext } from '../../context/AppContext';
-import Dashboard from '../Dashboard';
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { describe, test, expect, vi, beforeEach } from "vitest";
+import "@testing-library/jest-dom";
+import { BrowserRouter } from "react-router-dom";
+import { AppContext } from "../../context/AppContext";
+import Dashboard from "../Dashboard";
 
-describe('Dashboard Component', () => {
-  const mockContextValue = { activeStatus: 'Arrived' };
+describe("Dashboard Component", () => {
+  const mockContextValue = { activeStatus: "Arrived" };
 
   beforeEach(() => {
     vi.clearAllMocks();
@@ -19,46 +19,50 @@ describe('Dashboard Component', () => {
         <AppContext.Provider value={mockContextValue}>
           <Dashboard />
         </AppContext.Provider>
-      </BrowserRouter>
+      </BrowserRouter>,
     );
   };
 
-  test('renders the dashboard with key components', () => {
+  test("renders the dashboard with key components", () => {
     renderComponent();
 
-    expect(screen.getByText('Package Dashboard')).toBeInTheDocument();
-    expect(screen.getByText('Manage incoming packages and tenant notifications')).toBeInTheDocument();
-    expect(screen.getByText('Add New Package')).toBeInTheDocument();
+    expect(screen.getByText("Package Dashboard")).toBeInTheDocument();
+    expect(
+      screen.getByText("Manage incoming packages and tenant notifications"),
+    ).toBeInTheDocument();
+    expect(screen.getByText("Add New Package")).toBeInTheDocument();
   });
 
-  test('opens the Add Package modal when the button is clicked', () => {
+  test("opens the Add Package modal when the button is clicked", () => {
     renderComponent();
 
-    const addButton = screen.getByText('Add New Package');
+    const addButton = screen.getByText("Add New Package");
     fireEvent.click(addButton);
 
-    expect(screen.getByText('Add Package')).toBeInTheDocument(); // Assuming modal has a title "Add Package"
+    expect(screen.getByText("Add Package")).toBeInTheDocument(); // Assuming modal has a title "Add Package"
   });
 
-  test('updates search query when typing in the search box', () => {
+  test("updates search query when typing in the search box", () => {
     renderComponent();
 
-    const searchInput = screen.getByPlaceholderText('Search by name or tracking number...');
-    fireEvent.change(searchInput, { target: { value: 'Tracking123' } });
+    const searchInput = screen.getByPlaceholderText(
+      "Search by name or tracking number...",
+    );
+    fireEvent.change(searchInput, { target: { value: "Tracking123" } });
 
-    expect(searchInput.value).toBe('Tracking123');
+    expect(searchInput.value).toBe("Tracking123");
   });
 
-  test('applies filters when selecting filter options', () => {
+  test("applies filters when selecting filter options", () => {
     renderComponent();
 
-    const filterButton = screen.getByText('Filter');
+    const filterButton = screen.getByText("Filter");
     fireEvent.click(filterButton);
 
-    const carrierLabel = screen.getByText('Carrier');
+    const carrierLabel = screen.getByText("Carrier");
     const carrierSelect = carrierLabel.nextElementSibling;
-    fireEvent.change(carrierSelect, { target: { value: 'FedEx' } });
+    fireEvent.change(carrierSelect, { target: { value: "FedEx" } });
 
-    expect(carrierSelect.value).toBe('FedEx');
+    expect(carrierSelect.value).toBe("FedEx");
   });
 });

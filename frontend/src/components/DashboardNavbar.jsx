@@ -10,21 +10,21 @@ const DashboardNavbar = () => {
   const [showSettings, setShowSettings] = useState(false);
 
   const logout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     setToken(null);
     setUser(null);
-    navigate('/');
+    navigate("/");
   };
 
   React.useEffect(() => {
     const handleClickOutside = (event) => {
-      if (showSettings && !event.target.closest('.settings-container')) {
+      if (showSettings && !event.target.closest(".settings-container")) {
         setShowSettings(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [showSettings]);
 
   return (
@@ -42,7 +42,7 @@ const DashboardNavbar = () => {
             alt=""
             onClick={() => setShowSettings(!showSettings)}
           />
-          
+
           {showSettings && (
             <div className="absolute right-0 top-10 w-28 bg-white rounded-md shadow-lg border z-50">
               <div className="py-1 px-2 font-bold border-b">My Account</div>
@@ -55,11 +55,11 @@ const DashboardNavbar = () => {
                   <Settings className="h-4 w-4" />
                   Settings
                 </button>
-                <button 
+                <button
                   onClick={logout}
                   className="w-full text-left px-2 py-1.5 text-sm hover:text-red-600 flex items-center gap-2 cursor-pointer"
                 >
-                  <LogOut className="h-4 w-4"/>
+                  <LogOut className="h-4 w-4" />
                   Logout
                 </button>
               </div>

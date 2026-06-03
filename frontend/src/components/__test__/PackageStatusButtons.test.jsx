@@ -1,24 +1,26 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, test, expect, vi } from 'vitest';
-import '@testing-library/jest-dom';
-import PackageStatusButtons from '../PackageStatusButtons';
-import { AppContext } from '../../context/AppContext';
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { describe, test, expect, vi } from "vitest";
+import "@testing-library/jest-dom";
+import PackageStatusButtons from "../PackageStatusButtons";
+import { AppContext } from "../../context/AppContext";
 
-vi.mock('../../services/packageApi', () => ({
+vi.mock("../../services/packageApi", () => ({
   packageService: {
-    getPackagesByStatus: vi.fn().mockResolvedValue({ packages: [] })
-  }
+    getPackagesByStatus: vi.fn().mockResolvedValue({ packages: [] }),
+  },
 }));
 
-describe('PackageStatusButtons Component', () => {
+describe("PackageStatusButtons Component", () => {
   const mockSetActiveStatus = vi.fn();
 
-  const renderComponent = (activeStatus = 'arrived') => {
+  const renderComponent = (activeStatus = "arrived") => {
     return render(
-      <AppContext.Provider value={{ activeStatus, setActiveStatus: mockSetActiveStatus }}>
+      <AppContext.Provider
+        value={{ activeStatus, setActiveStatus: mockSetActiveStatus }}
+      >
         <PackageStatusButtons />
-      </AppContext.Provider>
+      </AppContext.Provider>,
     );
   };
 
@@ -26,29 +28,29 @@ describe('PackageStatusButtons Component', () => {
     vi.clearAllMocks();
   });
 
-  test('renders all status buttons', () => {
+  test("renders all status buttons", () => {
     renderComponent();
-    expect(screen.getByText('Arrived')).toBeInTheDocument();
-    expect(screen.getByText('Notified')).toBeInTheDocument();
-    expect(screen.getByText('Picked Up')).toBeInTheDocument();
+    expect(screen.getByText("Arrived")).toBeInTheDocument();
+    expect(screen.getByText("Notified")).toBeInTheDocument();
+    expect(screen.getByText("Picked Up")).toBeInTheDocument();
   });
 
-  test('calls setActiveStatus when clicking status buttons', () => {
+  test("calls setActiveStatus when clicking status buttons", () => {
     renderComponent();
 
-    fireEvent.click(screen.getByText('Notified'));
-    expect(mockSetActiveStatus).toHaveBeenCalledWith('notified');
+    fireEvent.click(screen.getByText("Notified"));
+    expect(mockSetActiveStatus).toHaveBeenCalledWith("notified");
 
-    fireEvent.click(screen.getByText('Picked Up'));
-    expect(mockSetActiveStatus).toHaveBeenCalledWith('picked');
+    fireEvent.click(screen.getByText("Picked Up"));
+    expect(mockSetActiveStatus).toHaveBeenCalledWith("picked");
 
-    fireEvent.click(screen.getByText('Arrived'));
-    expect(mockSetActiveStatus).toHaveBeenCalledWith('arrived');
+    fireEvent.click(screen.getByText("Arrived"));
+    expect(mockSetActiveStatus).toHaveBeenCalledWith("arrived");
   });
 
-  test('highlights the active status button', () => {
-    renderComponent('notified');
-    const notifiedButton = screen.getByText('Notified').closest('button');
-    expect(notifiedButton).toHaveClass('text-red-600');
+  test("highlights the active status button", () => {
+    renderComponent("notified");
+    const notifiedButton = screen.getByText("Notified").closest("button");
+    expect(notifiedButton).toHaveClass("text-red-600");
   });
 });

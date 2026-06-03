@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { X } from "lucide-react";
-import { packageService } from '../services/packageApi';
+import { packageService } from "../services/packageApi";
 import { toast } from "react-toastify";
 
 const AddPackageModal = ({ isOpen, onClose }) => {
@@ -41,7 +41,7 @@ const AddPackageModal = ({ isOpen, onClose }) => {
         resetForm();
         onClose();
         if (onClose) {
-          onClose(true); 
+          onClose(true);
         }
       } else {
         toast.error(response.message);
@@ -80,12 +80,17 @@ const AddPackageModal = ({ isOpen, onClose }) => {
         </button>
 
         <h2 className="text-2xl font-bold">Add New Package</h2>
-        <h3 className="mb-6 text-gray-500 text-sm">Enter the details of the new package arrival.</h3>
+        <h3 className="mb-6 text-gray-500 text-sm">
+          Enter the details of the new package arrival.
+        </h3>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="trackingNumber" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="trackingNumber"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Tracking Number
               </label>
               <input
@@ -100,7 +105,10 @@ const AddPackageModal = ({ isOpen, onClose }) => {
             </div>
 
             <div>
-              <label htmlFor="carrier" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="carrier"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Carrier
               </label>
               <select
@@ -123,7 +131,10 @@ const AddPackageModal = ({ isOpen, onClose }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="recipient" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="recipient"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Recipient Name
               </label>
               <input
@@ -138,7 +149,10 @@ const AddPackageModal = ({ isOpen, onClose }) => {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Recipient Email
               </label>
               <input
@@ -155,7 +169,10 @@ const AddPackageModal = ({ isOpen, onClose }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="apartment" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="apartment"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Apartment Number
               </label>
               <input
@@ -170,7 +187,10 @@ const AddPackageModal = ({ isOpen, onClose }) => {
             </div>
 
             <div>
-              <label htmlFor="size" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="size"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Package Size
               </label>
               <select
@@ -192,7 +212,10 @@ const AddPackageModal = ({ isOpen, onClose }) => {
           </div>
 
           <div>
-            <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="description"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Description
             </label>
             <textarea
