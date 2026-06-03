@@ -8,14 +8,15 @@ import chatRouter from './routes/chatRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
-connectDB();
+await connectDB();
 
 app.use(express.json());
+
+const allowedOrigin = process.env.FRONTEND_URL || "http://localhost:5173";
 app.use(cors({
-  origin: true, 
+  origin: allowedOrigin, 
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
 }));
 
 // API Endpoints
